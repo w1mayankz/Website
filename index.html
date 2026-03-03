@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MAYANK // PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'IBM Plex Mono', monospace; 
+            background-color: black;
+            color: white;
+            margin: 0;
+        }
+        
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 0;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Fix autofill background color in Chrome */
+        input:-webkit-autofill {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px black inset;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="password-screen" class="h-[100dvh] flex flex-col justify-between p-6 md:p-10">
+        <div class="flex justify-between text-lg md:text-xl tracking-wider opacity-60">
+            <span>@w1mayank</span>
+            <span>2026</span>
+        </div>
+
+        <div class="flex flex-col items-center text-center space-y-10">
+            <div class="text-[16px] md:text-[22px] leading-relaxed tracking-wide">
+                <p>The website is in progress</p>
+                <p>If you're a developer, enter the password below</p>
+            </div>
+
+            <div class="w-full max-w-md flex flex-col items-center space-y-6">
+                <input type="password" id="dev-password" class="w-full bg-transparent border border-white p-4 text-center focus:outline-none text-xl md:text-2xl rounded-none" autocomplete="off">
+                <button id="enter-btn" class="text-[#ff0000] hover:opacity-70 transition-opacity cursor-pointer text-2xl md:text-3xl tracking-widest font-medium">[ enter ]</button>
+                <p id="error-msg" class="text-white text-sm tracking-widest opacity-0 transition-opacity">wrong password</p>
+            </div>
+        </div>
+
+        <div class="flex justify-between text-lg md:text-xl tracking-wider pb-4">
+            <a href="https://x.com/w1mayank" target="_blank" class="hover:opacity-70 underline underline-offset-8 decoration-1">X</a>
+            <a href="https://github.com/w1mayankz" target="_blank" class="hover:opacity-70 underline underline-offset-8 decoration-1">GitHub</a>
+        </div>
+    </div>
+
+    <div id="main-portfolio" class="hidden min-h-screen flex-col">
+        
+        <header class="w-full p-6 flex justify-between text-[15px]">
+            <div class="flex gap-8">
+                <a href="#" class="hover:opacity-70 transition-opacity">Archive</a>
+                <a href="#" class="hover:opacity-70 transition-opacity">Explore</a>
+            </div>
+            <a href="#" class="hover:opacity-70 transition-opacity">Search</a>
+        </header>
+
+        <div class="marquee-container text-[14px] opacity-60">
+            <div class="marquee-content">
+                <span>@w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 </span>
+                <span>@w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 @w1mayank 2026 </span>
+            </div>
+        </div>
+
+        <main class="flex-grow flex flex-col items-center pt-16 px-4 pb-16">
+            
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Trading made simple.</h1>
+                <h2 class="text-3xl md:text-4xl font-bold mb-10">and effective.</h2>
+                <p class="text-[#ff0000] tracking-[0.2em] text-sm font-bold">MIND > MARKET</p>
+            </div>
+
+            <div class="mb-8 tracking-widest text-sm">
+                [ Projects ]
+            </div>
+
+            <div class="border border-white/40 w-full max-w-2xl p-6 md:p-10 flex flex-col items-center">
+                
+                <h3 class="text-xl md:text-2xl font-bold w-full text-left mb-6">HTF Candles Indicator</h3>
+                
+                <div class="w-full mb-8">
+                    <img src="20260303_143317.png" alt="HTF Candles Indicator Chart" class="w-full h-auto object-cover border border-white/20">
+                </div>
+                
+                <div class="w-full text-left text-sm md:text-[15px] opacity-60 leading-relaxed mb-10 flex flex-col gap-1">
+                    <p>No more switching timeframes back and forth</p>
+                    <p>See all the timeframes you need, on just one chart</p>
+                    <p>Shows multiple previous candles not just the current one</p>
+                    <p>Adjustable padding, spacing, and width</p>
+                </div>
+                
+                <a href="#" class="text-[#ff0000] underline decoration-[#ff0000] underline-offset-4 hover:opacity-70 transition-opacity font-bold tracking-wider text-lg">
+                    Access now
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const passInput = document.getElementById('dev-password');
+        const enterBtn = document.getElementById('enter-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const passScreen = document.getElementById('password-screen');
+        const mainPort = document.getElementById('main-portfolio');
+
+        function checkPassword() {
+            if (passInput.value === 'Mayank_1b') {
+                passScreen.classList.add('hidden');
+                mainPort.classList.remove('hidden');
+                mainPort.classList.add('flex');
+            } else {
+                errorMsg.classList.remove('opacity-0');
+            }
+        }
+
+        enterBtn.addEventListener('click', checkPassword);
+        
+        passInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        passInput.addEventListener('input', () => {
+            errorMsg.classList.add('opacity-0');
+        });
+    </script>
+</body>
+</html>
