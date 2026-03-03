@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MAYANK // PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'IBM Plex Mono', monospace; 
+            background-color: black;
+            color: white;
+            /* using dvh to fix mobile address bar issues */
+            height: 100dvh; 
+            margin: 0;
+            overflow: hidden;
+        }
+        .hero-text { 
+            font-size: 12vw; 
+            font-weight: 900; 
+            letter-spacing: -0.05em; 
+            line-height: 0.9; 
+            text-transform: uppercase;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px black inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="password-screen" class="h-full flex flex-col justify-between p-6 md:p-10">
+        <div class="flex justify-between text-lg md:text-xl tracking-wider">
+            <span>@w1mayank</span>
+            <span>2026</span>
+        </div>
+
+        <div class="flex flex-col items-center text-center space-y-10">
+            <div class="text-[16px] md:text-[22px] leading-relaxed tracking-wide">
+                <p>The website is in progress</p>
+                <p>If you're a developer, enter the password below</p>
+            </div>
+
+            <div class="w-full max-w-md flex flex-col items-center space-y-6">
+                <input type="password" id="dev-password" 
+                    class="w-full bg-transparent border border-white p-4 text-center focus:outline-none text-xl md:text-2xl rounded-none" 
+                    autocomplete="off">
+                
+                <button id="enter-btn" class="text-[#ff0000] hover:opacity-70 transition-opacity cursor-pointer text-2xl md:text-3xl tracking-widest font-medium">
+                    [ enter ]
+                </button>
+                
+                <p id="error-msg" class="text-white text-sm tracking-widest opacity-0 transition-opacity">wrong password</p>
+            </div>
+        </div>
+
+        <div class="flex justify-between text-lg md:text-xl tracking-wider pb-4">
+            <a href="https://x.com/w1mayank" target="_blank" class="hover:opacity-70 underline underline-offset-8 decoration-1">X</a>
+            <a href="https://github.com/w1mayankz" target="_blank" class="hover:opacity-70 underline underline-offset-8 decoration-1">GitHub</a>
+        </div>
+    </div>
+
+    <div id="main-portfolio" class="hidden h-full flex-col">
+        <header class="fixed top-0 w-full p-6 z-50">
+            <nav class="flex justify-between text-[10px] tracking-[0.3em] uppercase">
+                <div class="flex gap-10">
+                    <a href="#" class="hover:opacity-50">EXPLORE</a>
+                    <a href="#" class="hover:opacity-50">ARCHIVE</a>
+                </div>
+                <button onclick="document.getElementById('info-modal').showModal()" class="hover:opacity-50">INFO</button>
+            </nav>
+        </header>
+
+        <main class="h-full flex flex-col items-center justify-center text-center px-6">
+            <h1 class="hero-text mb-4">MAYANK</h1>
+            <div class="opacity-70 text-[16px] tracking-widest">
+                <p>Futures Trader | 🇮🇳</p>
+            </div>
+            <a href="#" class="mt-16 border border-white/20 px-12 py-4 text-[10px] tracking-[0.5em] uppercase hover:bg-white hover:text-black transition-all">
+                [ ENTER ]
+            </a>
+        </main>
+
+        <dialog id="info-modal" class="bg-white text-black p-12 backdrop:bg-black/95 m-auto">
+            <form method="dialog" class="flex flex-col items-center gap-6 text-[10px] tracking-widest text-center uppercase">
+                <h2 class="text-xl font-bold">INFO</h2>
+                <p>MAYANK</p>
+                <p>Futures Trader | 🇮🇳</p>
+                <button type="submit" class="mt-4 border border-black px-8 py-2 hover:bg-black hover:text-white transition-all">[ CLOSE ]</button>
+            </form>
+        </dialog>
+
+        <footer class="fixed bottom-0 w-full p-6 flex justify-between text-[10px] tracking-widest opacity-30 uppercase">
+            <div>© 2026 MAYANK</div>
+            <div class="flex gap-8">
+                <a href="https://github.com/w1mayankz" target="_blank" class="hover:opacity-100">GITHUB</a>
+                <a href="https://x.com/w1mayank" target="_blank" class="hover:opacity-100">X</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const passInput = document.getElementById('dev-password');
+        const enterBtn = document.getElementById('enter-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const passScreen = document.getElementById('password-screen');
+        const mainPort = document.getElementById('main-portfolio');
+
+        function checkPassword() {
+            if (passInput.value === 'Mayank_1b') {
+                passScreen.classList.add('hidden');
+                mainPort.classList.remove('hidden');
+                mainPort.classList.add('flex');
+            } else {
+                errorMsg.classList.remove('opacity-0');
+            }
+        }
+
+        enterBtn.addEventListener('click', checkPassword);
+        
+        passInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkPassword();
+        });
+        
+        passInput.addEventListener('input', () => {
+            errorMsg.classList.add('opacity-0');
+        });
+    </script>
+</body>
+</html>
